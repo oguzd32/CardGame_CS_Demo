@@ -51,16 +51,16 @@ public class Spin : MonoBehaviour
         spinButton.onClick.AddListener(SpinTheWheel);
         
         totalChances = new List<int>();
+    }
 
+    public void SpinTheWheel()
+    {
         for (int i = 0; i < prizes.Count; i++)
         {
             totalChances.Add(prizes[i].chance);
             probabilitySpace += prizes[i].chance;
         }
-    }
-
-    public void SpinTheWheel()
-    {
+        
         spinButton.gameObject.SetActive(false);
         
         randomTime = Random.Range(1, 3);
@@ -127,8 +127,6 @@ public class Spin : MonoBehaviour
             {
                 if (item.GetItemType == ItemData.ItemTypes.BOMB)
                 {
-                    Debug.Log("bombayi uret");
-                    
                     Item bombItem = Instantiate(item,
                         prizes[randomSlot].slotTransform);
                     
